@@ -2,3 +2,199 @@
 Theme Name: projet11
 */
 
+@font-face {
+    font-family: "Space Mono";
+    src: url("assets/font/SpaceMono-Regular.ttf") format("truetype");
+  }
+
+body{
+    font-family: 'Space Mono', sans-serif;
+    max-width: 1440px;
+    margin: auto;
+}
+    
+
+
+header {
+    display: flex;
+    background-color: white;
+    align-items: center;
+    height: 80px;
+    box-shadow: 0px 11px 12px -7px rgba(126, 126, 126, 0.226);
+}
+
+.nav {
+
+    display: flex;
+    align-items: center;
+    width: 100%;
+    justify-content: space-around;
+}
+
+ul {
+    list-style-type: none;
+    display: flex;
+}
+
+li{
+padding-right: 25px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+a:hover {
+
+    font-weight: 700;
+}
+
+.logo img {
+
+    width: 341px;
+    height: 21px;
+}
+
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Style de la modale */
+.modal {
+    display: none; /* Cachée par défaut */
+    position: fixed; /* Positionnée de manière fixe */
+    z-index: 1; /* Au-dessus des autres éléments */
+    left: 0;
+    top: 0;
+    width: 100%; /* Largeur complète */
+    height: 100%; /* Hauteur complète */
+    overflow: auto; /* Défilement activé */
+    background-color: rgb(0,0,0); /* Arrière-plan noir */
+    background-color: rgba(0,0,0,0.4); /* Opacité de l'arrière-plan */
+  }
+  
+  /* Style du contenu de la modale */
+  .modal-content {
+    background-color: #fefefe; /* Arrière-plan blanc */
+    margin: 15% auto; /* Marges pour centrer la modale verticalement et horizontalement */
+    padding: 20px;
+    border: 5px solid black;
+    width: 28%; 
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .wpcf7-spinner{
+    display:none;
+  }
+
+  #textarea{
+   
+    height:150px
+
+  }
+
+  .wpcf7-form-control {
+    border-width: 1px;
+    border-radius: 5px;
+    height: 30px;
+    border-color: #B8BBC2;
+  }
+
+
+  .modal-content .modal-title {
+    overflow: hidden;
+    line-height: 58px;
+    display: flex;
+    flex-wrap: wrap;
+    margin: -17px;
+    font-size: 55px;
+    font-weight: 400;
+    font-style: italic;
+    margin-bottom: 28px;
+  }
+
+  .wpcf7-submit {
+    width: 295px;
+    height: 50px;
+    background-color: #D8D8D8;
+  }
+
+  .post {
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+  }
+
+  .post h1{
+    font-size: 66px;
+    font-style: italic;
+    line-height: 58px;
+    font-weight: 400;
+}
+  
+.post p{
+  font-size: 14px;
+  line-height: 20.74px;
+  font-weight: 400;
+}
+
+  .post-content{
+    width: 50%;
+  }
+
+  .ref{
+    
+    width: 50%;
+  }
+
+  .contact{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 50%;
+  }
+
+  .btn-contact {
+    padding: 8px 15px 8px 15px;
+    background-color: #D8D8D8;
+    width: 272px;
+    height: 50px;
+    font-weight: 400;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #000000;
+    text-decoration: none;
+}
+
+#vaa {
+  display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#vaa h3{
+  margin-right: 65%;
+}
+
+#phoapp{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+#phoapp img {
+  width: 564px !important;
+    object-fit: cover;
+    height: 495px !important;
+}
