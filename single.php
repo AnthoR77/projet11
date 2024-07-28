@@ -6,12 +6,13 @@
 
                 <div class="ref">
                     <h1 class="post-title"><?php the_title(); ?></h1>
-                    <p class="post-info"> RÉFÉRENCE : <?php the_field('Reference'); ?></p>
-                    <p class="post-info"> CATÉGORIE : <?php the_terms(get_the_ID(), 'categorie'); ?> </p>
-                    <p class="post-info"> FORMAT : <?php the_terms(get_the_ID(), 'format'); ?> </p>
-                    <p class="post-info"> TYPE : <?php the_field('Type'); ?></p>
-                    <p class="post-info"> ANNÉE : <?php the_date(); ?></p>
-
+                    <p> RÉFÉRENCE : <?php the_field('Reference'); ?></p>
+                    <p> CATÉGORIE : <?php the_terms(get_the_ID(), 'categorie'); ?> </p>
+                    <p> FORMAT : <?php the_terms(get_the_ID(), 'format'); ?> </p>
+                    <p> TYPE : <?php the_field('Type'); ?></p>
+                    <p> ANNÉE : <?php the_date(); ?></p>
+                    
+                    <hr>
                 </div>
 
                 <div class="post-content">
@@ -19,45 +20,63 @@
                 </div>
 
             </div>
+         
+
             <div class="contact-slider">
                 <div class="contact">
                     <p>Cette photo vous intéresse ?</p>
                     <a id="btn" class="btn-contact">Contact</a>
                 </div>
-            </div>
-            <hr>
-            <div id="vaa">
-                <h3>VOUS AIMEREZ AUSSI</h3>
-
-                <div id="phoapp">
-
-                    <?php
-                    $cat = get_the_terms(get_the_ID(), 'categorie');
-                    $query = new WP_Query([
-                        'post__not_in' => [get_the_ID()],
-                        'post_type' => 'photo',
-                        'posts_per_page' => 2,
-                        'tax_query' => [
-                            [
-                                'taxonomy' => 'categorie',
-                                'field' => 'term_id',
-                                'terms' => $cat[0]->term_id,
-                            ]
-                        ]
-                    ]);
-                    while ($query->have_posts()) : $query->the_post();
-                    ?>
-
-                        <?php the_content(); ?>
-
-                    <?php endwhile;
-                    wp_reset_postdata(); ?>
+                <div class="carrousel">
+                    <div class="mini">
 
 
+                        <?php
+                        $previous = get_previous_post();
+                        $next = get_next_post();
+                        ?>
+
+
+                        <?php if (get_previous_post()) { ?>
+                            <img class="image-slider visible-slider" src="<?php echo get_the_post_thumbnail_url($previous) ?>" alt="précédente">
+                            <img class="image-slider hidden-slider" src="<?php echo get_the_post_thumbnail_url($next) ?>" alt="suivante">
+
+                        <?php } elseif (get_next_post()) { ?>
+                            <img class="image-slider visible-slider" src="<?php echo get_the_post_thumbnail_url($next) ?>" alt="suivante">
+                            <img class="image-slider hidden-slider" src="<?php echo get_the_post_thumbnail_url($previous) ?>" alt="précédente">
+                        <?php } ?>
+
+                        <div class="arrows">
+                            <div>
+                                <?php if (get_previous_post()) : ?>
+                                    <a href="<?php echo get_the_permalink($previous) ?>">
+                                        <img class="leftarrow" src="<?php echo get_stylesheet_directory_uri($previous) . '/assets/images/leftarrow.png' ?>">
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+                            <div>
+                                <?php if (get_next_post()) : ?>
+                                    <a href="<?php echo get_the_permalink($next) ?>">
+                                        <img class="rightarrow" src="<?php echo get_stylesheet_directory_uri($next) . '/assets/images/rightarrow.png' ?>">
+                                    </a>
+                                <?php endif; ?>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
 
-        <?php endwhile; ?>
-    <?php endif; ?>
+            </div>
+</div>
+<hr>
+<div id="vaa">
+    <h3>VOUS AIMEREZ AUSSI</h3>
+
+    <?php get_template_part('template-parts/photo-block') ?>
+    
+
+</div>
+
+<?php endwhile; ?>
+<?php endif; ?>
 </div>
 <?php get_footer(); ?>
